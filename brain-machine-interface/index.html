@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI市場動向インフォグラフィック (2025年版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--
+    Color Palette Name: Brilliant Blues
+    HEX Codes: #004E89, #0077B6, #00A8E8, #90E0EF, #CAF0F8
+
+    Narrative Plan & Structure:
+    1.  Hero: Title, intro, and a key statistic to grab attention.
+    2.  What is BMI?: A simple HTML/CSS flowchart explaining the core process.
+    3.  Two Paths (Invasive vs. Non-Invasive): Side-by-side comparison using a bar chart for key metrics.
+    4.  Technology Deep Dive: A grid of cards for each modality, with a central Radar Chart for multi-dimensional comparison.
+    5.  Medical Applications: Donut chart showing the focus of applications.
+    6.  Beyond Medicine: Bubble chart illustrating emerging non-medical markets.
+    7.  Competitive Landscape: Cards for key industry players.
+    8.  Ethical Maze (ELSI): A structured HTML/CSS diagram highlighting key ethical questions.
+    9.  Future Outlook: A line chart projecting market growth.
+
+    Visualization Choices & Justification (NO SVG, NO Mermaid JS):
+    -   BMI Process Flow: Goal: Organize. Method: HTML/CSS. Justification: Best for simple, clear process visualization without needing complex libraries.
+    -   Invasive vs. Non-Invasive Bar Chart: Goal: Compare. Library: Chart.js/Canvas. Justification: Ideal for direct comparison of metrics like risk and signal quality.
+    -   Technology Radar Chart: Goal: Compare. Library: Chart.js/Canvas. Justification: Compares multiple technologies across multiple quantitative axes (resolution, cost, etc.) effectively.
+    -   Medical Applications Donut Chart: Goal: Compare/Inform. Library: Chart.js/Canvas. Justification: Shows the proportional composition of different application areas.
+    -   Non-Medical Market Bubble Chart: Goal: Compare. Library: Chart.js/Canvas. Justification: Represents market segment sizes visually and engagingly.
+    -   Ethical Questions Diagram: Goal: Organize. Method: HTML/CSS. Justification: Presents complex questions in a structured, easy-to-digest format.
+    -   Market Growth Line Chart: Goal: Change. Library: Chart.js/Canvas. Justification: Clearly shows trends over a period of time.
+    -   Icons: Standard Unicode characters for simplicity and no-SVG compliance.
+    -->
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background-color: #f0f4f8; /* Light gray-blue background */
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 350px;
+        max-height: 400px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 400px;
+        }
+      }
+      .text-shadow {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+      .gradient-text {
+        background: linear-gradient(45deg, #0077b6, #00a8e8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .flow-arrow {
+        content: "➔";
+        font-size: 2rem;
+        color: #00a8e8;
+        margin: 0 1rem;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <div class="container mx-auto p-4 md:p-8">
+      <header class="text-center py-12">
+        <h1
+          class="text-4xl md:text-6xl font-bold gradient-text text-shadow mb-4"
+        >
+          ブレイン・マシン・インターフェース
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-light text-[#004E89]">
+          精神と機械の融合：市場動向と未来展望 2025
+        </h2>
+        <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
+          脳からの信号を直接利用して外部デバイスを操作するBMI技術は、医療の変革から人間の能力拡張まで、無限の可能性を秘めています。このインフォグラフィックでは、その核心技術、市場動向、そして私たちが直面する倫理的課題を解き明かします。
+        </p>
+      </header>
+
+      <main>
+        <section id="what-is-bmi" class="my-16">
+          <div class="bg-white rounded-lg shadow-lg p-6 md:p-10">
+            <h3
+              class="text-2xl md:text-3xl font-bold text-center text-[#004E89] mb-8"
+            >
+              BMIの基本プロセス
+            </h3>
+            <div
+              class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 text-center"
+            >
+              <div class="flex items-center flex-col md:flex-row">
+                <div class="p-4 rounded-lg bg-[#CAF0F8] w-48">
+                  <span class="text-5xl">🧠</span>
+                  <p class="font-bold mt-2 text-[#004E89]">1. 脳信号</p>
+                  <p class="text-sm text-gray-600">思考や意図が発生</p>
+                </div>
+                <span class="hidden md:block flow-arrow"></span>
+                <span class="block md:hidden text-2xl my-2">↓</span>
+              </div>
+              <div class="flex items-center flex-col md:flex-row">
+                <div class="p-4 rounded-lg bg-[#90E0EF] w-48">
+                  <span class="text-5xl">📡</span>
+                  <p class="font-bold mt-2 text-[#004E89]">2. 信号取得</p>
+                  <p class="text-sm text-gray-600">電極等で活動を計測</p>
+                </div>
+                <span class="hidden md:block flow-arrow"></span>
+                <span class="block md:hidden text-2xl my-2">↓</span>
+              </div>
+              <div class="flex items-center flex-col md:flex-row">
+                <div class="p-4 rounded-lg bg-[#00A8E8] w-48">
+                  <span class="text-5xl">💻</span>
+                  <p class="font-bold mt-2 text-white">3. 解読 (AI)</p>
+                  <p class="text-sm text-gray-100">信号から意図を推定</p>
+                </div>
+                <span class="hidden md:block flow-arrow"></span>
+                <span class="block md:hidden text-2xl my-2">↓</span>
+              </div>
+              <div class="p-4 rounded-lg bg-[#0077B6] w-48">
+                <span class="text-5xl">🦾</span>
+                <p class="font-bold mt-2 text-white">4. デバイス制御</p>
+                <p class="text-sm text-gray-100">義手やPC等を操作</p>
+              </div>
+            </div>
+            <p class="mt-8 text-center text-gray-600 max-w-2xl mx-auto">
+              BMIシステムは、ユーザーの脳内で発生した神経活動をセンサーで捉え、その信号をAIアルゴリズムで解読し、最終的に外部デバイスを制御するためのコマンドに変換します。一部のシステムでは、デバイスからの触覚情報などを脳に送り返す「双方向」通信も可能です。
+            </p>
+          </div>
+        </section>
+
+        <section id="invasive-vs-non" class="my-16">
+          <div class="text-center mb-10">
+            <h3 class="text-2xl md:text-3xl font-bold text-[#004E89]">
+              2つのアプローチ：侵襲型 vs. 非侵襲型
+            </h3>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+              BMI技術は、デバイスの設置方法により大きく2つに分類されます。外科手術を伴う「侵襲型」は高精度な信号を得られますがリスクも伴います。一方、「非侵襲型」は安全ですが信号品質に課題があります。
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <h4 class="text-xl font-bold text-center text-[#0077B6] mb-4">
+                特性比較
+              </h4>
+              <div class="chart-container h-80 md:h-96">
+                <canvas id="bmiTypeComparisonChart"></canvas>
+              </div>
+              <p class="mt-6 text-gray-600 text-sm">
+                このグラフは、侵襲型と非侵襲型BMIの主要な特性を相対的に比較したものです。侵襲型は信号品質で圧倒的に優位ですが、安全性とコストの面で大きな課題を抱えています。技術開発は、このトレードオフをいかに克服するかにかかっています。
+              </p>
+            </div>
+            <div class="space-y-6">
+              <div
+                class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-[#004E89]"
+              >
+                <h4 class="text-xl font-bold text-[#004E89]">
+                  侵襲型 (Invasive)
+                </h4>
+                <p class="mt-2 text-gray-700">
+                  脳内または脳表に電極を直接埋め込み、高品質な神経信号を取得。重度麻痺患者の義肢制御など、精密な操作が求められる医療応用に期待される。
+                </p>
+                <p class="mt-2 font-semibold text-gray-500">
+                  例：ECoG、刺入型微小電極アレイ
+                </p>
+              </div>
+              <div
+                class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-[#00A8E8]"
+              >
+                <h4 class="text-xl font-bold text-[#00A8E8]">
+                  非侵襲型 (Non-Invasive)
+                </h4>
+                <p class="mt-2 text-gray-700">
+                  頭皮上から脳活動を計測。安全で手軽だが、信号が減衰しやすくノイズも多い。ゲームや教育、ウェルネス分野での応用が進む。
+                </p>
+                <p class="mt-2 font-semibold text-gray-500">
+                  例：脳波(EEG)、近赤外分光法(NIRS)
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="tech-deep-dive" class="my-16">
+          <div class="text-center mb-10">
+            <h3 class="text-2xl md:text-3xl font-bold text-[#004E89]">
+              主要BMIモダリティの比較分析
+            </h3>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+              BMIには様々な脳活動計測技術（モダリティ）が用いられます。それぞれに得意なこと、苦手なことがあり、応用目的に応じて最適な技術が選択されます。ここでは主要な5つのモダリティを多角的に比較します。
+            </p>
+          </div>
+          <div class="bg-white rounded-lg shadow-lg p-6 md:p-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div class="chart-container h-96 md:h-[500px] max-h-[500px]">
+                <canvas id="modalityRadarChart"></canvas>
+              </div>
+              <div class="space-y-4">
+                <div class="p-4 bg-gray-50 rounded-lg">
+                  <p class="text-sm">
+                    <strong class="text-base block mb-1 text-[#004E89]"
+                      >刺入型電極 (Intracortical Electrodes)</strong
+                    >脳組織に針状の電極を直接刺入し、個々の神経細胞レベルの活動を記録する最も高解像度な手法。精密な制御が可能ですが、脳へのダメージや長期安定性が課題です。
+                  </p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                  <p class="text-sm">
+                    <strong class="text-base block mb-1 text-[#0077B6]"
+                      >ECoG (皮質脳波)</strong
+                    >脳の表面（硬膜下など）にシート状の電極を設置して脳活動を記録します。刺入型より低侵襲で、EEGより高品質な信号を得られるバランスの取れた手法です。
+                  </p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                  <p class="text-sm">
+                    <strong class="text-base block mb-1 text-[#00A8E8]"
+                      >EEG (脳波)</strong
+                    >頭皮上に電極を配置し、脳全体の電気活動を測定する最も手軽で安全な非侵襲的手法。時間分解能は高いですが、空間分解能が低くノイズに弱い点が課題です。
+                  </p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                  <p class="text-sm">
+                    <strong class="text-base block mb-1 text-[#90E0EF]"
+                      >NIRS (近赤外分光法)</strong
+                    >頭皮から近赤外光を当て、脳活動に伴う血流の変化を捉える非侵襲的手法。動きに強くポータブルですが、信号応答が比較的緩やかです。
+                  </p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                  <p class="text-sm">
+                    <strong class="text-base block mb-1 text-[#4a5568]"
+                      >fMRI (機能的磁気共鳴画像法)</strong
+                    >強力な磁場を利用して脳血流の変化を検出し、脳活動をマッピングします。空間分解能が非常に高いですが、装置が巨大で高価なため、主に研究で利用されます。
+                  </p>
+                </div>
+                <p class="mt-6 text-gray-600 text-sm">
+                  このレーダーチャートは、各技術の長所と短所を視覚的に示しています。例えば、刺入型電極は「信号品質」と「空間分解能」で突出していますが、「侵襲性（低いほど良い）」と「コスト」では他の技術に劣ります。非侵襲型技術は安全性とコストで優位性があります。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="applications" class="my-20">
+          <div class="text-center mb-10">
+            <h3 class="text-2xl md:text-3xl font-bold text-[#004E89]">
+              生活を変える応用分野
+            </h3>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+              BMIの応用範囲は医療に留まらず、私たちの生活の様々な側面に革命をもたらす可能性を秘めています。
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <h4 class="text-xl font-bold text-center text-[#0077B6] mb-4">
+                ⚕️ 医療・リハビリテーション
+              </h4>
+              <div class="chart-container h-72 md:h-80">
+                <canvas id="medicalAppsDonutChart"></canvas>
+              </div>
+              <p class="mt-6 text-gray-600 text-sm">
+                現在の医療応用研究は、失われた機能を取り戻す「運動機能回復」が最大の焦点です。次いで、ALS患者などのための「コミュニケーション支援」、脳卒中後の機能回復を促す「ニューロリハビリテーション」が続きます。
+              </p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+              <h4 class="text-xl font-bold text-center text-[#0077B6] mb-4">
+                🎮 医療以外のフロンティア
+              </h4>
+              <div class="chart-container h-72 md:h-80">
+                <canvas id="nonMedicalBubbleChart"></canvas>
+              </div>
+              <p class="mt-6 text-gray-600 text-sm">
+                医療以外の分野では、特に「ゲーム・エンタメ」市場での活用が期待されています。思考による直感的な操作は、これまでにない没入体験を生み出します。「能力強化」や「スマートホーム」制御も、大きな成長が見込まれる分野です。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="landscape" class="my-16">
+          <div class="text-center mb-10">
+            <h3 class="text-2xl md:text-3xl font-bold text-[#004E89]">
+              世界の主要プレイヤー
+            </h3>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+              BMI分野では、野心的なスタートアップから政府機関まで、様々な組織が技術開発の覇権を競っています。
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300"
+            >
+              <img
+                src="https://placehold.co/100x100/004E89/FFFFFF?text=N"
+                alt="Neuralink Logo"
+                class="mx-auto rounded-full mb-4"
+                onerror="this.onerror=null;this.src='https://placehold.co/100x100/ccc/FFFFFF?text=Logo';"
+              />
+              <h4 class="text-xl font-bold text-[#004E89]">Neuralink</h4>
+              <p class="mt-2 text-gray-600">
+                高帯域幅の侵襲型BMIを開発。脳とAIの共生を長期目標に掲げ、ヒト臨床試験を開始。
+              </p>
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300"
+            >
+              <img
+                src="https://placehold.co/100x100/0077B6/FFFFFF?text=S"
+                alt="Synchron Logo"
+                class="mx-auto rounded-full mb-4"
+                onerror="this.onerror=null;this.src='https://placehold.co/100x100/ccc/FFFFFF?text=Logo';"
+              />
+              <h4 class="text-xl font-bold text-[#0077B6]">Synchron</h4>
+              <p class="mt-2 text-gray-600">
+                血管内からアプローチする低侵襲ステント型電極「Stentrode」を開発。開頭手術を回避。
+              </p>
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300"
+            >
+              <img
+                src="https://placehold.co/100x100/00A8E8/FFFFFF?text=D"
+                alt="DARPA Logo"
+                class="mx-auto rounded-full mb-4"
+                onerror="this.onerror=null;this.src='https://placehold.co/100x100/ccc/FFFFFF?text=Logo';"
+              />
+              <h4 class="text-xl font-bold text-[#00A8E8]">DARPA (N3)</h4>
+              <p class="mt-2 text-gray-600">
+                米国防高等研究計画局。兵士向けの高性能な「非外科的」BMI技術の開発を目指す。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="elsi" class="my-20">
+          <div class="bg-white rounded-lg shadow-lg p-6 md:p-10">
+            <h3
+              class="text-2xl md:text-3xl font-bold text-center text-[#004E89] mb-8"
+            >
+              倫理的迷路の探求 (ELSI)
+            </h3>
+            <p class="text-center max-w-3xl mx-auto text-gray-600 mb-10">
+              BMI技術は計り知れない恩恵をもたらす可能性がある一方で、私たちの社会と人間性の根幹を揺るがす重大な倫理的・法的・社会的課題（ELSI）を提起します。
+            </p>
+            <div class="space-y-6">
+              <div
+                class="flex flex-col md:flex-row items-start p-4 bg-gray-50 rounded-lg"
+              >
+                <span class="text-4xl mr-4">🔐</span>
+                <div>
+                  <h4 class="text-lg font-bold text-[#004E89]">
+                    精神的プライバシーと認知的自由
+                  </h4>
+                  <p class="text-gray-700">
+                    思考や感情がデータ化されるとき、誰がそれを所有し、どう保護するのか？思考の自由は守られるのか？
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-col md:flex-row items-start p-4 bg-gray-50 rounded-lg"
+              >
+                <span class="text-4xl mr-4">⚖️</span>
+                <div>
+                  <h4 class="text-lg font-bold text-[#0077B6]">
+                    公平性とアクセス
+                  </h4>
+                  <p class="text-gray-700">
+                    能力強化BMIが富裕層に独占され、新たな社会格差「ニューロ・ディバイド」を生まないか？
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-col md:flex-row items-start p-4 bg-gray-50 rounded-lg"
+              >
+                <span class="text-4xl mr-4">👤</span>
+                <div>
+                  <h4 class="text-lg font-bold text-[#00A8E8]">
+                    自律性とアイデンティティ
+                  </h4>
+                  <p class="text-gray-700">
+                    AIと融合したBMIは、人間の意思決定や自己意識にどう影響するのか？「自分らしさ」とは何か？
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-col md:flex-row items-start p-4 bg-gray-50 rounded-lg"
+              >
+                <span class="text-4xl mr-4">⚔️</span>
+                <div>
+                  <h4 class="text-lg font-bold text-[#90E0EF]">
+                    デュアルユース（軍民両用）
+                  </h4>
+                  <p class="text-gray-700">
+                    治療のために開発された技術が、兵器や監視に応用されるリスクをどう管理するべきか？
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="future" class="my-16">
+          <div class="text-center mb-10">
+            <h3 class="text-2xl md:text-3xl font-bold text-[#004E89]">
+              未来への軌跡：市場成長と技術革新
+            </h3>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+              BMI市場は急成長を遂げており、ナノテクノロジーやAIの進化がその勢いをさらに加速させると予測されています。
+            </p>
+          </div>
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h4 class="text-xl font-bold text-center text-[#0077B6] mb-4">
+              世界BMI市場規模の予測（億ドル）
+            </h4>
+            <div class="chart-container h-80 md:h-96">
+              <canvas id="marketGrowthChart"></canvas>
+            </div>
+            <p class="mt-6 text-gray-600 text-sm">
+              このグラフは、世界のBMI市場が今後数年間で指数関数的に成長することを示しています。特に医療分野での承認が進むこと、そして非医療分野での新しいアプリケーションが登場することが、この成長を牽引する主な要因です。
+            </p>
+            <p class="mt-4 text-xs text-gray-500 text-center">
+              注：本グラフの市場規模データは、Grand View
+              Research、MarketsandMarketsなどの公開市場調査レポートを参考に作成したものです。
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="text-center py-8 mt-12 border-t border-gray-300">
+        <p class="text-gray-500">
+          本インフォグラフィックは提供された調査レポートに基づき作成されました。
+        </p>
+        <p class="text-sm text-gray-400">Canvas Infographics © 2025</p>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const wrapLabel = (label) => {
+          if (typeof label !== "string" || label.length <= 16) {
+            return label;
+          }
+          const words = label.split(" ");
+          let lines = [];
+          let currentLine = "";
+          for (const word of words) {
+            if ((currentLine + " " + word).trim().length > 16) {
+              lines.push(currentLine.trim());
+              currentLine = word;
+            } else {
+              currentLine = (currentLine + " " + word).trim();
+            }
+          }
+          if (currentLine) {
+            lines.push(currentLine.trim());
+          }
+          return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+          const item = tooltipItems[0];
+          let label = item.chart.data.labels[item.dataIndex];
+          if (Array.isArray(label)) {
+            return label.join(" ");
+          } else {
+            return label;
+          }
+        };
+
+        const brilliantBlues = {
+          dark: "#004E89",
+          medium: "#0077B6",
+          light: "#00A8E8",
+          lighter: "#90E0EF",
+          lightest: "#CAF0F8",
+        };
+
+        const defaultChartOptions = {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              labels: {
+                color: "#374151",
+                font: {
+                  family: "'Noto Sans JP', sans-serif",
+                },
+              },
+            },
+            tooltip: {
+              callbacks: {
+                title: tooltipTitleCallback,
+              },
+              titleFont: { family: "'Noto Sans JP', sans-serif" },
+              bodyFont: { family: "'Noto Sans JP', sans-serif" },
+            },
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: "#4b5563",
+                font: { family: "'Noto Sans JP', sans-serif" },
+              },
+              grid: { color: "#e5e7eb" },
+            },
+            y: {
+              ticks: {
+                color: "#4b5563",
+                font: { family: "'Noto Sans JP', sans-serif" },
+              },
+              grid: { color: "#e5e7eb" },
+            },
+          },
+        };
+
+        new Chart(document.getElementById("bmiTypeComparisonChart"), {
+          type: "bar",
+          data: {
+            labels: ["信号品質", "安全性", "携帯性", "コスト"],
+            datasets: [
+              {
+                label: "侵襲型",
+                data: [90, 30, 40, 20],
+                backgroundColor: brilliantBlues.dark,
+                borderColor: brilliantBlues.dark,
+                borderWidth: 1,
+              },
+              {
+                label: "非侵襲型",
+                data: [40, 95, 85, 90],
+                backgroundColor: brilliantBlues.light,
+                borderColor: brilliantBlues.light,
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            ...defaultChartOptions,
+            scales: {
+              x: { ticks: { font: { size: 14 } } },
+              y: {
+                beginAtZero: true,
+                max: 100,
+                ticks: { callback: (value) => value + "%" },
+              },
+            },
+            plugins: {
+              ...defaultChartOptions.plugins,
+              legend: { position: "top" },
+            },
+          },
+        });
+
+        const radarChartLabels = [
+          "信号品質",
+          "空間分解能",
+          "時間分解能",
+          ["侵襲性", "(低)"],
+          "携帯性",
+          "コスト (低)",
+        ].map(wrapLabel);
+        new Chart(document.getElementById("modalityRadarChart"), {
+          type: "radar",
+          data: {
+            labels: radarChartLabels,
+            datasets: [
+              {
+                label: "刺入型電極",
+                data: [9, 9, 10, 1, 3, 2],
+                backgroundColor: "rgba(0, 78, 137, 0.2)",
+                borderColor: brilliantBlues.dark,
+                pointBackgroundColor: brilliantBlues.dark,
+              },
+              {
+                label: "ECoG",
+                data: [8, 7, 10, 3, 4, 3],
+                backgroundColor: "rgba(0, 119, 182, 0.2)",
+                borderColor: brilliantBlues.medium,
+                pointBackgroundColor: brilliantBlues.medium,
+              },
+              {
+                label: "EEG",
+                data: [4, 3, 9, 10, 8, 9],
+                backgroundColor: "rgba(0, 168, 232, 0.2)",
+                borderColor: brilliantBlues.light,
+                pointBackgroundColor: brilliantBlues.light,
+              },
+              {
+                label: "NIRS",
+                data: [5, 6, 2, 10, 7, 8],
+                backgroundColor: "rgba(144, 224, 239, 0.2)",
+                borderColor: brilliantBlues.lighter,
+                pointBackgroundColor: brilliantBlues.lighter,
+              },
+            ],
+          },
+          options: {
+            ...defaultChartOptions,
+            scales: {
+              r: {
+                angleLines: { color: "#d1d5db" },
+                grid: { color: "#d1d5db" },
+                pointLabels: {
+                  font: { size: 12, family: "'Noto Sans JP', sans-serif" },
+                  color: "#374151",
+                },
+                ticks: { display: false, backdropColor: "transparent" },
+                suggestedMin: 0,
+                suggestedMax: 10,
+              },
+            },
+            plugins: {
+              ...defaultChartOptions.plugins,
+              legend: { position: "bottom" },
+            },
+          },
+        });
+
+        new Chart(document.getElementById("medicalAppsDonutChart"), {
+          type: "doughnut",
+          data: {
+            labels: [
+              "運動機能回復",
+              "コミュニケーション支援",
+              "ニューロリハビリテーション",
+              "精神疾患治療",
+              "その他",
+            ],
+            datasets: [
+              {
+                data: [45, 25, 15, 10, 5],
+                backgroundColor: [
+                  brilliantBlues.dark,
+                  brilliantBlues.medium,
+                  brilliantBlues.light,
+                  brilliantBlues.lighter,
+                  brilliantBlues.lightest,
+                ],
+                hoverOffset: 4,
+              },
+            ],
+          },
+          options: {
+            ...defaultChartOptions,
+            scales: { x: { display: false }, y: { display: false } },
+            plugins: {
+              ...defaultChartOptions.plugins,
+              legend: { position: "right" },
+            },
+          },
+        });
+
+        new Chart(document.getElementById("nonMedicalBubbleChart"), {
+          type: "bubble",
+          data: {
+            datasets: [
+              {
+                label: "ゲーム・エンタメ",
+                data: [{ x: 30, y: 65, r: 25 }],
+                backgroundColor: "rgba(0, 78, 137, 0.7)",
+              },
+              {
+                label: "能力強化",
+                data: [{ x: 65, y: 45, r: 20 }],
+                backgroundColor: "rgba(0, 119, 182, 0.7)",
+              },
+              {
+                label: "スマートホーム (IoT)",
+                data: [{ x: 70, y: 75, r: 15 }],
+                backgroundColor: "rgba(0, 168, 232, 0.7)",
+              },
+              {
+                label: "マーケティング",
+                data: [{ x: 35, y: 25, r: 10 }],
+                backgroundColor: "rgba(144, 224, 239, 0.7)",
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "top",
+                labels: {
+                  color: "#374151",
+                  font: {
+                    family: "'Noto Sans JP', sans-serif",
+                  },
+                },
+              },
+              tooltip: {
+                callbacks: {
+                  title: tooltipTitleCallback,
+                  label: function (context) {
+                    return `${context.dataset.label}: 市場ポテンシャル ${context.raw.r}`;
+                  },
+                },
+                titleFont: { family: "'Noto Sans JP', sans-serif" },
+                bodyFont: { family: "'Noto Sans JP', sans-serif" },
+              },
+            },
+            scales: {
+              x: { display: false, min: 0, max: 100 },
+              y: { display: false, min: 0, max: 100 },
+            },
+          },
+        });
+
+        new Chart(document.getElementById("marketGrowthChart"), {
+          type: "line",
+          data: {
+            labels: [
+              "2022",
+              "2023",
+              "2024",
+              "2025 (予測)",
+              "2026 (予測)",
+              "2027 (予測)",
+              "2028 (予測)",
+            ],
+            datasets: [
+              {
+                label: "市場規模（億ドル）",
+                data: [20, 27, 38, 55, 80, 115, 160],
+                fill: true,
+                backgroundColor: "rgba(0, 119, 182, 0.2)",
+                borderColor: brilliantBlues.medium,
+                tension: 0.3,
+              },
+            ],
+          },
+          options: {
+            ...defaultChartOptions,
+            scales: {
+              y: { beginAtZero: true },
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
+
