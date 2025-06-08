@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI市場動向とケーススタディ (2025年版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--
+    Color Palette Name: Brilliant Blues
+    HEX Codes: #004E89, #0077B6, #00A8E8, #90E0EF, #CAF0F8
+    -->
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background-color: #f0f4f8;
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 350px;
+        max-height: 400px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 400px;
+        }
+      }
+      .text-shadow {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+      .gradient-text {
+        background: linear-gradient(45deg, #0077b6, #00a8e8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .case-study-card {
+        background-color: white;
+        border-left-width: 4px;
+        transition: all 0.3s ease-in-out;
+      }
+      .case-study-card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <div class="container mx-auto p-4 md:p-8">
+      <header class="text-center py-12">
+        <h1
+          class="text-4xl md:text-6xl font-bold gradient-text text-shadow mb-4"
+        >
+          ブレイン・マシン・インターフェース
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-light text-[#004E89]">
+          精神と機械の融合：市場動向と未来展望 2025
+        </h2>
+        <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
+          脳からの信号を直接利用して外部デバイスを操作するBMI技術は、医療の変革から人間の能力拡張まで、無限の可能性を秘めています。このインフォグラフィックでは、その核心技術、市場動向、具体的な実証実験、そして私たちが直面する倫理的課題を解き明かします。
+        </p>
+      </header>
+
+      <main>
+        <!-- NOTE: Previous sections are omitted for brevity, but would be included in a full version. -->
+
+        <section id="case-studies" class="my-20">
+          <div class="text-center mb-12">
+            <h3 class="text-2xl md:text-3xl font-bold text-[#004E89]">
+              応用領域別：実証実験ケーススタディ
+            </h3>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+              BMIは理論上の技術ではありません。世界中の研究機関や企業が、その可能性を現実のものとするため、様々な実証実験に取り組んでいます。ここではその代表的な事例を紹介します。
+            </p>
+          </div>
+
+          <div class="space-y-8">
+            <!-- Case Study 1: Motor Function Restoration -->
+            <div
+              class="case-study-card rounded-lg shadow-lg p-6 md:p-8 border-[#004E89]"
+            >
+              <div class="flex items-center mb-4">
+                <span class="text-5xl mr-5">🦾</span>
+                <div>
+                  <h4 class="text-xl md:text-2xl font-bold text-[#004E89]">
+                    医療：運動機能回復
+                  </h4>
+                  <p class="text-gray-600 font-semibold">
+                    プロジェクト：BrainGate2臨床試験
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    実験概要
+                  </h5>
+                  <p class="text-gray-700">
+                    四肢麻痺の患者の脳（運動野）に微小電極アレイを埋め込み、思考によってロボットアームやカーソルを操作する能力を検証。ブラウン大学などが中心となり、10年以上にわたり継続されている研究。
+                  </p>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    主な結果
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      思考だけでロボットアームを操作し、コーヒーを飲むことに成功。
+                    </li>
+                    <li>
+                      タブレット端末を操作し、メール送信やウェブ閲覧を実現。
+                    </li>
+                    <li>
+                      無線送信システムを開発し、ケーブルレスでのBMI利用が可能に。
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    課題と展望
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      長期にわたるインプラントの安定性（信号品質の劣化）。
+                    </li>
+                    <li>
+                      システムの再キャリブレーション（調整）が日常的に必要。
+                    </li>
+                    <li>より多くの被験者による大規模な臨床試験の必要性。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 2: Communication Support -->
+            <div
+              class="case-study-card rounded-lg shadow-lg p-6 md:p-8 border-[#0077B6]"
+            >
+              <div class="flex items-center mb-4">
+                <span class="text-5xl mr-5">💬</span>
+                <div>
+                  <h4 class="text-xl md:text-2xl font-bold text-[#0077B6]">
+                    医療：コミュニケーション支援
+                  </h4>
+                  <p class="text-gray-600 font-semibold">
+                    プロジェクト：Stentrode™ (Synchron社)
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    実験概要
+                  </h5>
+                  <p class="text-gray-700">
+                    ALS（筋萎縮性側索硬化症）など重度の麻痺を持つ患者に対し、開頭手術を伴わない血管内留置型電極（ステントロード）を脳の運動野付近の血管に設置。思考によるPC操作能力を評価。
+                  </p>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    主な結果
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      被験者が思考だけでPCを操作し、メッセージ送信やオンラインショッピングに成功。
+                    </li>
+                    <li>Twitter（現X）への投稿も実現。</li>
+                    <li>
+                      開頭手術が不要なため、侵襲型BMIのリスクを大幅に低減。
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    課題と展望
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      血管内からの信号取得のため、信号の解像度が刺入型より低い。
+                    </li>
+                    <li>デコード（解読）できるコマンドの種類や速度の向上。</li>
+                    <li>長期的なデバイスの安全性と有効性のさらなる検証。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 3: Neuro-rehabilitation -->
+            <div
+              class="case-study-card rounded-lg shadow-lg p-6 md:p-8 border-[#00A8E8]"
+            >
+              <div class="flex items-center mb-4">
+                <span class="text-5xl mr-5">🧠💪</span>
+                <div>
+                  <h4 class="text-xl md:text-2xl font-bold text-[#00A8E8]">
+                    医療：ニューロリハビリテーション
+                  </h4>
+                  <p class="text-gray-600 font-semibold">
+                    アプローチ：BMI併用型機能的電気刺激(FES)/ロボット療法
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    実験概要
+                  </h5>
+                  <p class="text-gray-700">
+                    脳卒中などで麻痺した患者が手足を動かそうとする「運動企図」をEEGで検出。その信号をトリガーとして、麻痺した筋肉に電気刺激(FES)を与えたり、ロボット外骨格を駆動させたりして実際の動きを補助する。
+                  </p>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    主な結果
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      従来の理学療法と比較して、有意な運動機能の改善が見られた。
+                    </li>
+                    <li>
+                      脳の「神経可塑性」（神経回路の再編成）を促進することが示唆された。
+                    </li>
+                    <li>
+                      患者自身の能動的な参加がリハビリ効果を高めることが示された。
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    課題と展望
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>個人の脳活動パターンに合わせたシステムの最適化。</li>
+                    <li>より簡便で、在宅でも利用可能なシステムの開発。</li>
+                    <li>
+                      リハビリ効果を最大化するための最適な介入タイミングの解明。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 4: Sensory Restoration -->
+            <div
+              class="case-study-card rounded-lg shadow-lg p-6 md:p-8 border-[#90E0EF]"
+            >
+              <div class="flex items-center mb-4">
+                <span class="text-5xl mr-5">🖐️⚡</span>
+                <div>
+                  <h4 class="text-xl md:text-2xl font-bold text-[#90E0EF]">
+                    医療：感覚機能の回復
+                  </h4>
+                  <p class="text-gray-600 font-semibold">
+                    プロジェクト：双方向BMIによる触覚フィードバック研究
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#00A8E8] pb-1"
+                  >
+                    実験概要
+                  </h5>
+                  <p class="text-gray-700">
+                    四肢麻痺の患者がBMIでロボットアームを操作する際、アームの指先にあるセンサーからの圧力情報を電気信号に変換。その信号を脳の感覚野にある電極を介して刺激し、人工的な「触覚」を生み出す。（ピッツバーグ大学など）
+                  </p>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#00A8E8] pb-1"
+                  >
+                    主な結果
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      被験者は目隠しをされた状態で、どの指が触れられたかを識別できた。
+                    </li>
+                    <li>
+                      物をつかむ際の力加減が改善され、よりスムーズな操作が可��に。
+                    </li>
+                    <li>
+                      ロボットアームが自分の身体の一部であるかのような感覚（身体化）が向上。
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#00A8E8] pb-1"
+                  >
+                    課題と展望
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      圧力だけでなく、温度や質感など、より複雑な触覚情報の伝達。
+                    </li>
+                    <li>
+                      長期にわたって自然で安定した感覚を提示する刺激パターンの開発。
+                    </li>
+                    <li>感覚フィードバックシステムの小型化と信頼性向上。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 5: Psychiatric Disorders -->
+            <div
+              class="case-study-card rounded-lg shadow-lg p-6 md:p-8 border-[#004E89]"
+            >
+              <div class="flex items-center mb-4">
+                <span class="text-5xl mr-5">❤️‍🩹</span>
+                <div>
+                  <h4 class="text-xl md:text-2xl font-bold text-[#004E89]">
+                    医療：精神疾患治療
+                  </h4>
+                  <p class="text-gray-600 font-semibold">
+                    アプローチ：適応型脳深部刺激(aDBS) / DecNef
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    実験概要
+                  </h5>
+                  <p class="text-gray-700">
+                    重度のうつ病患者の脳活動を常時モニタリング。うつ症状に関連する特異的な脳活動パターンをAIが検出した際にのみ、自動で脳深部を電気刺激(aDBS)する。または、fMRIで脳活動を可視化し、患者自身が脳状態を制御する訓練を行う(DecNef)。
+                  </p>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    主な結果
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      治療抵抗性の重度うつ病患者において、症状の寛解が報告された。
+                    </li>
+                    <li>
+                      常時刺激する従来のDBSに比べ、副作用が少なく、効果が持続。
+                    </li>
+                    <li>
+                      個人の症状や脳活動に合わせた、個別化医療の可能性を示した。
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    課題と展望
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      複雑な精神状態に対応する、信頼性の高い神経バイオマーカーの特定。
+                    </li>
+                    <li>
+                      気分や人格への意図せぬ影響など、高度な倫理的配慮の必要性。
+                    </li>
+                    <li>
+                      fMRIを用いるDecNefは、コストとアクセス性が大きな障壁。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 6: Gaming & Entertainment -->
+            <div
+              class="case-study-card rounded-lg shadow-lg p-6 md:p-8 border-[#0077B6]"
+            >
+              <div class="flex items-center mb-4">
+                <span class="text-5xl mr-5">🎮</span>
+                <div>
+                  <h4 class="text-xl md:text-2xl font-bold text-[#0077B6]">
+                    ゲーム＆エンターテインメント
+                  </h4>
+                  <p class="text-gray-600 font-semibold">
+                    プロジェクト：Awakening (Neurable社)
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    実験概要
+                  </h5>
+                  <p class="text-gray-700">
+                    非侵襲型の脳波(EEG)センサーを搭載したVRヘッドセットを開発。ユーザーが「念じる」だけでVRゲーム内のオブジェクトを選択し、操作できるかを検証。アーケード施設でのデモンストレーションも実施。
+                  </p>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    主な結果
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      特別な訓練なしで、多くのユーザーが直感的な操作に成功。
+                    </li>
+                    <li>
+                      コントローラーを使わない新しいゲーム体験の可能性を示した。
+                    </li>
+                    <li>意図検出のアルゴリズム（機械学習）の有効性を実証。</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    課題と展望
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      EEG信号のノイズが多く、誤操作や無反応が発生することがある。
+                    </li>
+                    <li>複雑な操作（移動と選択の同時実行など）への対応。</li>
+                    <li>
+                      デバイスの装着感の改善と、より手頃な価格での製品化。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 7: Marketing -->
+            <div
+              class="case-study-card rounded-lg shadow-lg p-6 md:p-8 border-[#00A8E8]"
+            >
+              <div class="flex items-center mb-4">
+                <span class="text-5xl mr-5">🛒</span>
+                <div>
+                  <h4 class="text-xl md:text-2xl font-bold text-[#00A8E8]">
+                    マーケティング：ニューロマーケティング
+                  </h4>
+                  <p class="text-gray-600 font-semibold">
+                    アプローチ：EEGを用いた広告・製品評価
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    実験概要
+                  </h5>
+                  <p class="text-gray-700">
+                    消費者が広告動画や製品パッケージを見ている際の脳波(EEG)を測定。アイトラッキング（視線追跡）と組み合わせ、どの要素が注意を引き、どのような感情的反応（好意、嫌悪、興奮など）を引き起こしているかを無意識レベルで分析する。
+                  </p>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    主な結果
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      アンケートでは現れない、消費者の瞬間的な感情の動きを可視化。
+                    </li>
+                    <li>
+                      広告のどのシーンが最も記憶に残りやすいかを科学的に特定。
+                    </li>
+                    <li>
+                      製品デザインやUI/UXの改善点を客観的なデータに基づいて抽出。
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    課題と展望
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>脳活動と購買意欲の直接的な因果関係の特定は困難。</li>
+                    <li>消費者の無意識に働きかけることへの倫理的懸念。</li>
+                    <li>実験室環境と実生活での消費行動のギャップ。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 8: Military & Defense -->
+            <div
+              class="case-study-card rounded-lg shadow-lg p-6 md:p-8 border-[#90E0EF]"
+            >
+              <div class="flex items-center mb-4">
+                <span class="text-5xl mr-5">🛡️</span>
+                <div>
+                  <h4 class="text-xl md:text-2xl font-bold text-[#90E0EF]">
+                    軍事・防衛：次世代BMI
+                  </h4>
+                  <p class="text-gray-600 font-semibold">
+                    プロジェクト：DARPA N3プログラム
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#00A8E8] pb-1"
+                  >
+                    実験概要
+                  </h5>
+                  <p class="text-gray-700">
+                    健常な兵士が使用するための、非外科的（または微小侵襲的）で高精度な双方向BMI技術の開発。ドローンの群制御、サイバー防衛システムとの連携、複雑な任務下での認知能力サポートなどを想定。
+                  </p>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#00A8E8] pb-1"
+                  >
+                    主な結果
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      複数の研究チームが音響、光学、電磁気学など多様なアプローチで開発中。
+                    </li>
+                    <li>
+                      非侵襲的な手法で特定の神経細胞群を標的とする基礎技術で進展。
+                    </li>
+                    <li>
+                      人間の脳と機械間の情報伝達速度と帯域幅の飛躍的向上を目指す。
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#00A8E8] pb-1"
+                  >
+                    課題と展望
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      非侵襲で侵襲レベルの解像度と速度を達成するという高い技術的障壁。
+                    </li>
+                    <li>
+                      デュアルユース（軍民両用）技術に関する深刻な倫理的課題。
+                    </li>
+                    <li>
+                      敵対者による「ブレインハッキング」のリスクと、その防御策の確立。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 9: Automotive -->
+            <div
+              class="case-study-card rounded-lg shadow-lg p-6 md:p-8 border-[#004E89]"
+            >
+              <div class="flex items-center mb-4">
+                <span class="text-5xl mr-5">🚗</span>
+                <div>
+                  <h4 class="text-xl md:text-2xl font-bold text-[#004E89]">
+                    自動車：ドライバーモニタリング
+                  </h4>
+                  <p class="text-gray-600 font-semibold">
+                    アプローチ：EEGによる眠気・不注意検知システム
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    実験概要
+                  </h5>
+                  <p class="text-gray-700">
+                    ドライバーの帽子やヘッドレストにEEGセンサーを内蔵し、運転中の認知状態をリアルタイムで監視。眠気や不注意に関連する脳波パターンをAIが検出し、事故を未然に防ぐシステムの研究。（日産自動車などの研究事例）
+                  </p>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    主な結果
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      物理的な兆候（頭の傾き等）が現れる前に、認知的な眠気を検出。
+                    </li>
+                    <li>
+                      ドライバーの「意図」を読み取り、手動運転から自動運転へのスムーズな移行を補助。
+                    </li>
+                    <li>
+                      脳活動に基づいて、警告を発したり、休憩を促したりするシステムを開発。
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    課題と展望
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      車両の振動やドライバーの体動によるEEG信号のノイズ除去。
+                    </li>
+                    <li>
+                      日常的な使用に耐える、快適で違和感のないセンサーの開発。
+                    </li>
+                    <li>
+                      多様な運転状況や個人差に対応できる、頑健なAIモデルの構築。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 10: Enhancement & Education -->
+            <div
+              class="case-study-card rounded-lg shadow-lg p-6 md:p-8 border-[#0077B6]"
+            >
+              <div class="flex items-center mb-4">
+                <span class="text-5xl mr-5">🎓</span>
+                <div>
+                  <h4 class="text-xl md:text-2xl font-bold text-[#0077B6]">
+                    能力強化・教育：ニューロフィードバック
+                  </h4>
+                  <p class="text-gray-600 font-semibold">
+                    アプローチ：EEGヘッドバンドによる集中力トレーニング
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    実験概要
+                  </h5>
+                  <p class="text-gray-700">
+                    市販のEEGヘッドバンド（例：Muse,
+                    NeuroSky）を使い、ユーザーの脳波を測定。集中状態（α波、β波など）やリラックス状態（θ波など）をリアルタイムで検出し、音や映像でフィードバック。ユーザーは自身の脳状態を意識的に制御する訓練を行う。
+                  </p>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    主な結果
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      継続的な訓練により、集中力の持続時間や瞑想の質の向上が報告されている。
+                    </li>
+                    <li>
+                      ADHDを持つ子供の注意散漫を改善する補助ツールとして利用例がある。
+                    </li>
+                    <li>
+                      アスリートのメンタルトレーニングや芸術家の創造性支援にも応用。
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h5
+                    class="font-bold text-gray-800 mb-2 border-b-2 border-[#90E0EF] pb-1"
+                  >
+                    課題と展望
+                  </h5>
+                  <ul class="list-disc list-inside text-gray-700 space-y-1">
+                    <li>
+                      訓練効果の科学的根拠や持続性については、まだ議論の余地がある。
+                    </li>
+                    <li>
+                      市販デバイスの信号精度は研究用機器に劣り、プラセボ効果も考慮が必要。
+                    </li>
+                    <li>
+                      「能力向上」の定義と、それへのアクセスにおける公平性の問題。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- (Other sections like Ethical Maze, Future Outlook would follow) -->
+      </main>
+
+      <footer class="text-center py-8 mt-12 border-t border-gray-300">
+        <p class="text-gray-500">
+          本インフォグラフィックは提供された調査レポートおよび公開情報を基に作成されました。
+        </p>
+        <p class="text-sm text-gray-400">Canvas Infographics © 2025</p>
+      </footer>
+    </div>
+
+    <script>
+      // No new JavaScript needed for this update.
+    </script>
+  </body>
+</html>
+

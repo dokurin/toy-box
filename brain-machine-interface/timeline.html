@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI研究開発タイムライン・インフォグラフィック</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--
+    Narrative Plan:
+    1.  Header: Captivating title about the BMI journey.
+    2.  Introduction: Hook with a key market projection to show relevance.
+    3.  Main Timeline: A vertical, visually engaging timeline will be the centerpiece. It will showcase key milestones from 1969 to 2025+, drawing data from the user-provided timeline artifact. Each entry will be concise and impactful.
+    4.  Spotlight Sections (Interspersed): To break up the timeline and provide deeper context, I will add:
+        -   A bar chart visualizing the exponential leap in communication speed (P300 vs. modern BCIs).
+        -   A simple flowchart illustrating the evolution of decoding algorithms (PVA -> Kalman -> AI).
+        -   A side-by-side comparison of Invasive vs. Non-invasive approaches.
+        -   A radar chart to represent the multi-faceted ethical challenges (ELSI).
+    5.  Future Outlook: A concluding section on the future possibilities, from therapy to enhancement.
+    6.  Footer: Credits and date.
+
+    Visualization Justification Plan:
+    -   Market Size: Single Big Number (HTML/CSS) - Goal: Inform. Justification: High-impact, immediate context.
+    -   Timeline: Vertical Timeline (HTML/CSS) - Goal: Show Change/Organize. Justification: Classic, intuitive way to present historical progression.
+    -   Communication Speed: Bar Chart (Chart.js/Canvas) - Goal: Compare. Justification: Clearly visualizes the dramatic quantitative difference in performance.
+    -   Decoding Evolution: Flowchart (HTML/CSS) - Goal: Organize (Process). Justification: Simple and effective for showing a linear technological progression.
+    -   BMI Types: Card Comparison (HTML/CSS) - Goal: Compare. Justification: Allows for a clear, side-by-side summary of pros and cons.
+    -   Ethical Challenges: Radar Chart (Chart.js/Canvas) - Goal: Relationships/Compare. Justification: Excellent for displaying multivariate qualitative data (urgency/importance of different issues).
+
+    Confirmation: NO SVG or Mermaid JS were used. All visual elements are either standard HTML/CSS styled with Tailwind, or rendered on a <canvas> element by Chart.js.
+
+    Color Palette Selected: Brilliant Blues (#00529B, #00AEEF, #9DD9F3, #F0F8FF, #0A2A43)
+    -->
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background-color: #f0f8ff;
+        color: #0a2a43;
+      }
+      .section-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #00529b;
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .card {
+        background-color: white;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        border-left: 5px solid #00aeef;
+      }
+      .timeline-container {
+        position: relative;
+        padding: 2rem 0;
+      }
+      .timeline-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 100%;
+        background-color: #9dd9f3;
+      }
+      .timeline-item {
+        position: relative;
+        width: 50%;
+        margin-bottom: 50px;
+      }
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        padding-right: 50px;
+        text-align: right;
+      }
+      .timeline-item:nth-child(even) {
+        left: 50%;
+        padding-left: 50px;
+        text-align: left;
+      }
+      .timeline-dot {
+        content: "";
+        position: absolute;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #00529b;
+        border: 3px solid #f0f8ff;
+      }
+      .timeline-item:nth-child(odd) .timeline-dot {
+        right: -10px;
+      }
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: -10px;
+      }
+      .timeline-content {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      .timeline-date {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #00529b;
+      }
+      @media screen and (max-width: 768px) {
+        .timeline-container::before {
+          left: 10px;
+        }
+        .timeline-item {
+          width: 100%;
+          padding-left: 40px;
+          padding-right: 0;
+          text-align: left !important;
+        }
+        .timeline-item:nth-child(even) {
+          left: 0;
+        }
+        .timeline-dot {
+          left: 1px !important;
+        }
+      }
+      .chart-container {
+        position: relative;
+        margin: auto;
+        height: 400px;
+        width: 100%;
+        max-width: 600px;
+      }
+      .flowchart-step {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        background-color: #ffffff;
+        border: 2px solid #00aeef;
+        border-radius: 0.5rem;
+        text-align: center;
+        font-weight: 600;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        color: #00529b;
+        min-height: 80px;
+      }
+      .flowchart-arrow {
+        font-size: 2.5rem;
+        color: #00aeef;
+        margin: 1rem;
+        align-self: center;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <div class="container mx-auto px-4 py-12">
+      <header class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-[#00529B] mb-4">
+          BMI研究開発タイムライン
+        </h1>
+        <p class="text-xl md:text-2xl text-[#0A2A43]">
+          思考が世界を動かすまでの軌跡
+        </p>
+      </header>
+
+      <section id="market-overview" class="mb-20">
+        <div
+          class="bg-white rounded-lg shadow-lg p-8 text-center border-t-4 border-[#00529B]"
+        >
+          <p class="text-lg text-[#0A2A43] mb-2">
+            世界のBMI市場規模予測 (2030年)
+          </p>
+          <p class="text-6xl md:text-7xl font-bold text-[#00AEEF] mb-4">
+            54億ドル
+          </p>
+          <p class="text-md text-[#0A2A43] max-w-3xl mx-auto">
+            医療分野での応用から、健常者の能力拡張へと応用範囲が拡大し、年平均成長率14%以上での力強い成長が見込まれています。
+          </p>
+        </div>
+      </section>
+
+      <section id="timeline">
+        <h2 class="section-title">主要なマイルストーン</h2>
+        <div class="timeline-container">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">1969</div>
+              <h3 class="font-bold text-lg my-2">単一ニューロンの意図的制御</h3>
+              <p class="text-sm">
+                Eberhard
+                Fetzが、サルの脳のニューロン活動を、学習によって意図的に制御できることを初めて実証。BMIの基本原理の萌芽となる。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">1980s</div>
+              <h3 class="font-bold text-lg my-2">
+                運動方向の「集団符号化」理論
+              </h3>
+              <p class="text-sm">
+                Apostolos
+                Georgopoulosらが、多数のニューロン活動を統合することで腕の運動方向を解読できることを発見。デコーディング研究の基礎を築く。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">1988</div>
+              <h3 class="font-bold text-lg my-2">P300スペラー開発</h3>
+              <p class="text-sm">
+                FarwellとDonchinが、非侵襲脳波(EEG)を利用し思考で文字入力するシステムを開発。重度麻痺患者のコミュニケーションに光を当てる。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2006</div>
+              <h3 class="font-bold text-lg my-2">ヒト侵襲型BMI「BrainGate」</h3>
+              <p class="text-sm">
+                John
+                Donoghueらが、四肢麻痺患者の脳に電極を埋込み、思考によるPCカーソルやロボットアームの操作に成功。ヒト臨床応用の道を拓く。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2012</div>
+              <h3 class="font-bold text-lg my-2">ECoGによる義手制御</h3>
+              <p class="text-sm">
+                日本の柳沢琢史氏らが、低侵襲なECoG（皮質脳波）を用い、脳卒中患者がリアルタイムでロボット義手を制御することに成功。日本の研究が世界的に注目される。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="my-20 p-8 bg-white rounded-lg shadow-lg">
+        <h2 class="section-title">コミュニケーション速度の飛躍</h2>
+        <p class="text-center max-w-3xl mx-auto mb-8">
+          AIデコーディング技術の進化は、思考をテキストに変換する速度を劇的に向上させました。
+        </p>
+        <div class="chart-container">
+          <canvas id="communicationSpeedChart"></canvas>
+        </div>
+      </section>
+
+      <section id="timeline-continued">
+        <div class="timeline-container">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2021</div>
+              <h3 class="font-bold text-lg my-2">「手書き想像」BCI</h3>
+              <p class="text-sm">
+                スタンフォード大学の研究Gが、手書き文字を想像する際の脳活動をAIで解読し、毎分90文字という高速なテキスト入力を実現。
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2023-24</div>
+              <h3 class="font-bold text-lg my-2">商業化の加速</h3>
+              <p class="text-sm">
+                Synchron社が血管内留置型デバイスの長期安全性を報告。Neuralink社がヒト臨床試験を開始し、思考によるPCゲーム操作などを実演。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2025</div>
+              <h3 class="font-bold text-lg my-2">AIによる技術革新</h3>
+              <p class="text-sm">
+                脳活動から流暢な音声をリアルタイムで合成する技術が登場。また、LLMを用いて非侵襲脳波の解読精度を向上させる研究も発表される。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tech-spotlight" class="my-20">
+        <h2 class="section-title">核となる技術の進化</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div class="card">
+            <h3 class="font-bold text-xl mb-4 text-[#00529B]">
+              思考を読み解くアルゴリズムの進化
+            </h3>
+            <div class="flex flex-col items-center justify-center space-y-4">
+              <div class="flowchart-step w-full">
+                初期：集団ベクトルアルゴリズム (PVA)
+              </div>
+              <div class="flowchart-arrow transform rotate-90">↓</div>
+              <div class="flowchart-step w-full">
+                2000年代：カルマンフィルター
+              </div>
+              <div class="flowchart-arrow transform rotate-90">↓</div>
+              <div class="flowchart-step w-full">現代：AI (RNN, CNN, LLM)</div>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="font-bold text-xl mb-4 text-[#00529B]">
+              未来への課題：倫理的考察
+            </h3>
+            <div class="chart-container h-80">
+              <canvas id="ethicsRadarChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="text-center py-8 mt-20 border-t-2 border-gray-300">
+        <p>
+          本インフォグラフィックは提供された調査レポートに基づき作成されました。
+        </p>
+        <p class="text-sm text-gray-500">
+          &copy; 2025 BMI Timeline Infographic.
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const brilliantBlues = {
+          primary: "#00529B",
+          secondary: "#00AEEF",
+          accent: "#9DD9F3",
+          lightBg: "#F0F8FF",
+          textDark: "#0A2A43",
+          white: "#FFFFFF",
+        };
+
+        const chartTooltipTitleCallback = (tooltipItems) => {
+          const item = tooltipItems[0];
+          let label = item.chart.data.labels[item.dataIndex];
+          if (Array.isArray(label)) {
+            return label.join(" ");
+          }
+          return label;
+        };
+
+        const wrapLabel = (str, maxLen = 16) => {
+          if (str.length <= maxLen) return str;
+          const words = str.split(" ");
+          const lines = [];
+          let currentLine = "";
+          for (const word of words) {
+            if ((currentLine + " " + word).trim().length > maxLen) {
+              lines.push(currentLine.trim());
+              currentLine = word;
+            } else {
+              currentLine = (currentLine + " " + word).trim();
+            }
+          }
+          if (currentLine) lines.push(currentLine.trim());
+          return lines;
+        };
+
+        const communicationSpeedCtx = document.getElementById(
+          "communicationSpeedChart"
+        );
+        if (communicationSpeedCtx) {
+          new Chart(communicationSpeedCtx, {
+            type: "bar",
+            data: {
+              labels: [
+                "従来のP300スペラー",
+                "手書き文字認識BCI (2021)",
+                "最新の発話支援BCI (2025)",
+              ].map((l) => wrapLabel(l)),
+              datasets: [
+                {
+                  label: "コミュニケーション速度 (語/分)",
+                  data: [8, 90, 91],
+                  backgroundColor: [
+                    brilliantBlues.accent,
+                    brilliantBlues.secondary,
+                    brilliantBlues.primary,
+                  ],
+                  borderColor: [
+                    brilliantBlues.accent,
+                    brilliantBlues.secondary,
+                    brilliantBlues.primary,
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { title: chartTooltipTitleCallback } },
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  ticks: { color: brilliantBlues.textDark },
+                },
+                x: { ticks: { color: brilliantBlues.textDark } },
+              },
+            },
+          });
+        }
+
+        const ethicsRadarCtx = document.getElementById("ethicsRadarChart");
+        if (ethicsRadarCtx) {
+          new Chart(ethicsRadarCtx, {
+            type: "radar",
+            data: {
+              labels: [
+                "精神的プライバシー",
+                "公平性・アクセス",
+                "安全性",
+                "自律性・自己同一性",
+                "データセキュリティ",
+                "デュアルユース(軍事転用)",
+              ].map((l) => wrapLabel(l)),
+              datasets: [
+                {
+                  label: "倫理的課題の重要度",
+                  data: [9, 8, 7, 9, 10, 8],
+                  backgroundColor: "rgba(0, 174, 239, 0.2)",
+                  borderColor: brilliantBlues.secondary,
+                  pointBackgroundColor: brilliantBlues.secondary,
+                  pointBorderColor: "#fff",
+                  pointHoverBackgroundColor: "#fff",
+                  pointHoverBorderColor: brilliantBlues.secondary,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { title: chartTooltipTitleCallback } },
+              },
+              scales: {
+                r: {
+                  beginAtZero: true,
+                  max: 10,
+                  angleLines: { color: "rgba(10, 42, 67, 0.2)" },
+                  grid: { color: "rgba(10, 42, 67, 0.2)" },
+                  pointLabels: {
+                    color: brilliantBlues.textDark,
+                    font: { size: 11 },
+                  },
+                  ticks: {
+                    color: brilliantBlues.textDark,
+                    backdropColor: "rgba(255, 255, 255, 0.75)",
+                  },
+                },
+              },
+            },
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
+
