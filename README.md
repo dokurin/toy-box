@@ -8,4 +8,4 @@
 
 ## Pages
 
-- [ブレインマシーンインターフェース（ BMI ） についての調査](/brain-machine-interface)
+- [ブレインマシーンインターフェース（ BMI ） についての調査](./brain-machine-interface/)
